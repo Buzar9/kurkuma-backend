@@ -3,8 +3,8 @@ package pl.zhr.scouting.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "quests")
-public class Quests {
+@Table(name = "quest")
+public class Quest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +17,10 @@ public class Quests {
     @Column(name = "job")
     private String job;
 
-    public Quests() {
+    public Quest() {
     }
 
-    public Quests(String description, String job) {
+    public Quest(String description, String job) {
         this.description = description;
         this.job = job;
     }
