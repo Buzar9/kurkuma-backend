@@ -1,6 +1,7 @@
 package pl.zhr.scouting.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "achievement")
@@ -13,6 +14,9 @@ public class Achievement {
 
     @Column(name = "title")
     private String title;
+
+    @OneToMany(mappedBy = "achievementId")
+    private List<Quest> questList;
 
     public Achievement() {
     }

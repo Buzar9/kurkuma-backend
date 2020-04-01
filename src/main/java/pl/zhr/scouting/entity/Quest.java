@@ -1,5 +1,7 @@
 package pl.zhr.scouting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,14 @@ public class Quest {
 
     @Column(name = "job")
     private String job;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "achievement_id")
+    private Achievement achievementId;
+
+    @Column(name = "title")
+    private String title;
 
     public Quest() {
     }
@@ -47,5 +57,28 @@ public class Quest {
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public Achievement getAchievementId() {
+        return achievementId;
+    }
+
+    public void setAchievementId(Achievement achievement) {
+        if(achievementId != null) {
+            achievementId = null;
+        }
+        this.achievementId = achievement;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(Achievement achievement) {
+        if (achievement == null) {
+            this.title = null;
+        } else {
+            this.title = achievement.getTitle();
+        }
     }
 }
