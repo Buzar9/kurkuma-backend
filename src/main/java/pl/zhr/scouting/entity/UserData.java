@@ -31,7 +31,7 @@ public class UserData {
     private User user;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "patrol_id")
     private Patrol patrolId;
 
