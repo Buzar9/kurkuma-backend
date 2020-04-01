@@ -10,6 +10,7 @@ import pl.zhr.scouting.service.UserService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
 @CrossOrigin(origins = "*")
 public class UserController {
 
@@ -19,13 +20,13 @@ public class UserController {
     @Autowired
     private UserRepository userRepositoryImpl;
 
-    @GetMapping("/users")
+    @GetMapping
     public List<User> findAll() {
 
         return userRepositoryImpl.findAll();
     }
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("/{userId}")
     public User findUserById (@PathVariable(value = "userId") int userId) {
 
         User tempUser = userRepositoryImpl.findByUserId(userId);
@@ -33,20 +34,20 @@ public class UserController {
         return tempUser;
     }
 
-    @PostMapping("/users")
+    @PostMapping
     public void addUser(@RequestBody User tempUser) {
 
         userServiceImpl.addUser(tempUser);
     }
 
-    @PutMapping("/users/{userId}")
+    @PutMapping("/{userId}")
     public void updateUser(@PathVariable int userId,
                            @RequestBody User tempUser) {
 
         userServiceImpl.updateUser(userId, tempUser);
     }
 
-    @DeleteMapping("/users/{userId}")
+    @DeleteMapping("/{userId}")
     public String deleteUser(@PathVariable(value = "userId") int userId) {
 
         userRepositoryImpl.deleteUser(userId);
