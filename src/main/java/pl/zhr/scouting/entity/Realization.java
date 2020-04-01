@@ -1,5 +1,7 @@
 package pl.zhr.scouting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,14 @@ public class Realization {
 
     @Column(name = "job")
     private String job;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User userId;
+
+    @Column(name = "username")
+    private String username;
 
     public Realization() {
     }
@@ -47,5 +57,28 @@ public class Realization {
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User user) {
+        if(userId != null) {
+            userId = null;
+        }
+        this.userId = user;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(User user) {
+        if (username == null) {
+            this.username = null;
+        } else {
+            this.username = user.getUsername();
+        }
     }
 }

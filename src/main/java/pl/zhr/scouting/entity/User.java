@@ -3,6 +3,7 @@ package pl.zhr.scouting.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -28,6 +29,9 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_data_id")
     private UserData userDataId;
+
+    @OneToMany(mappedBy = "userId")
+    private List<Realization> realizationList;
 
     public User() {
     }
