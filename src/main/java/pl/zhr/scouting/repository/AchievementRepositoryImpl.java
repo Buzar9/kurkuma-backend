@@ -21,7 +21,7 @@ public class AchievementRepositoryImpl implements AchievementRepository {
     public List<Achievement> findAll() {
 
         Session currentSession = entityManager.unwrap(Session.class);
-        Query query = currentSession.createQuery("from Achivment", Achievement.class);
+        Query query = currentSession.createQuery("from Achievement", Achievement.class);
         List<Achievement> achievementList = query.getResultList();
 
         return achievementList;

@@ -8,7 +8,7 @@ public class Achievement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "achivment_id")
+    @Column(name = "achievement_id")
     private int achievementId;
 
     @Column(name = "title")
