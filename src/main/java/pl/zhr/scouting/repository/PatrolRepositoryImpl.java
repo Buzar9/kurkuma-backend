@@ -17,11 +17,6 @@ public class PatrolRepositoryImpl implements PatrolRepository {
 
     private EntityManager entityManager;
 
-    @Autowired
-    public PatrolRepositoryImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
     @Override
     @Transactional
     public List<Patrol> findAll() {

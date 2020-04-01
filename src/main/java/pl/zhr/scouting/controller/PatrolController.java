@@ -8,13 +8,14 @@ import pl.zhr.scouting.repository.PatrolRepository;
 import java.util.List;
 
 @RestController
+@RequestMapping("/patrols")
 @CrossOrigin(origins = "*")
 public class PatrolController {
 
     @Autowired
     private PatrolRepository patrolRepositoryImpl;
 
-    @GetMapping("/patrols")
+    @GetMapping
     public List<Patrol> findAllPatrols() {
 
         List<Patrol> patrolList = patrolRepositoryImpl.findAll();
@@ -22,7 +23,7 @@ public class PatrolController {
         return patrolList;
     }
 
-    @GetMapping("/patrols/{patrolId}")
+    @GetMapping("/{patrolId}")
     public Patrol findPatrolById(@PathVariable(value = "patrolId") int patrolId) {
 
         Patrol tempPatrol = patrolRepositoryImpl.findById(patrolId);
@@ -30,14 +31,14 @@ public class PatrolController {
         return tempPatrol;
     }
 
-    @PostMapping("/patrols")
+    @PostMapping
     public void savePatrol(@RequestBody Patrol tempPatrol) {
 
         tempPatrol.setPatrolId(0);
         patrolRepositoryImpl.saveOrUpdate(tempPatrol);
     }
 
-    @PutMapping("/patrols/{patrolId}")
+    @PutMapping("/{patrolId}")
     public void updatePatrol(@PathVariable int patrolId,
                              @RequestBody Patrol tempPatrol) {
 
@@ -45,14 +46,14 @@ public class PatrolController {
         patrolRepositoryImpl.saveOrUpdate(tempPatrol);
     }
 
-    @PutMapping("/patrols/{patrolId}/{userId}")
+    @PutMapping("/{patrolId}/{userId}")
     public void addUserToPatrol(@PathVariable(value = "patrolId") int patrolId,
                                   @PathVariable(value = "userId") int userId){
 
        patrolRepositoryImpl.addUser(patrolId, userId);
     }
 
-    @DeleteMapping("/patrols/{patrolId}")
+    @DeleteMapping("/{patrolId}")
     public String deletePatrol(@PathVariable(value = "patrolId") int patrolId) {
 
         Patrol patrol = patrolRepositoryImpl.findById(patrolId);

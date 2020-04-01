@@ -3,30 +3,30 @@ package pl.zhr.scouting.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "questes")
-public class Achivment {
+@Table(name = "achievement")
+public class Achievement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "achivment_id")
-    private int achivmentId;
+    private int achievementId;
 
     @Column(name = "title")
     private String title;
 
-    public Achivment() {
+    public Achievement() {
     }
 
-    public Achivment(String title) {
+    public Achievement(String title) {
         this.title = title;
     }
 
-    public int getAchivmentId() {
-        return achivmentId;
+    public int getAchievementId() {
+        return achievementId;
     }
 
-    public void setAchivmentId(int achivmentId) {
-        this.achivmentId = achivmentId;
+    public void setAchievementId(int achievementId) {
+        this.achievementId = achievementId;
     }
 
     public String getTitle() {
