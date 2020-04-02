@@ -4,39 +4,39 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import pl.zhr.scouting.entity.Quest;
+import pl.zhr.scouting.entity.Realization;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
-public class QuestRepositoryImpl implements QuestRepository{
+public class RealizationRepositoryImpl implements RealizationRepository{
 
     @Autowired
     private EntityManager entityManager;
 
     @Override
-    public List<Quest> findAll() {
+    public List<Realization> findAll() {
 
         Session currentSession = entityManager.unwrap(Session.class);
-        Query query = currentSession.createQuery("from Quest", Quest.class);
-        List<Quest> questList = query.getResultList();
+        Query query = currentSession.createQuery("from Realization", Realization.class);
+        List<Realization> realizationList = query.getResultList();
 
-        return questList;
+        return realizationList;
     }
 
     @Override
-    public Quest findById(int questId) {
+    public Realization findById(int realizationId) {
         return null;
     }
 
     @Override
-    public void saveOrUpdate(Quest tempQuest) {
+    public void saveOrUpdate(Realization tempRealization) {
 
     }
 
     @Override
-    public void delete(int questId) {
+    public void delete(int realizationId) {
 
     }
 }
