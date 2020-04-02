@@ -16,7 +16,7 @@ public class QuestController {
     @Autowired
     private QuestRepository questRepositoryImpl;
 
-    @GetMapping("/")
+    @GetMapping("/quests")
     public List<Quest> questList(){
 
         return questRepositoryImpl.findAll();
