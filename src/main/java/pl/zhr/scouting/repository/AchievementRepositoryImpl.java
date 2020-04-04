@@ -80,6 +80,17 @@ public class AchievementRepositoryImpl implements AchievementRepository {
     }
 
     @Override
+    public void takeAchievementFromUser(int achievementId, int userId) {
+
+        Session currentSession = entityManager.unwrap(Session.class);
+        User tempUser = currentSession.get(User.class, userId);
+        Achievement tempAchievement = currentSession.get(Achievement.class, achievementId);
+        tempUser.removeFinishedAch(tempAchievement);
+        currentSession.saveOrUpdate(tempUser);
+        currentSession.saveOrUpdate(tempAchievement);
+    }
+
+    @Override
     public void delete(int achievementId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
