@@ -3,6 +3,7 @@ package pl.zhr.scouting.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "user")
@@ -143,7 +144,7 @@ public class User {
 
     public void removeOpenAch(Achievement theAchievement) {
 
-        if(openAchList.contains(theAchievement)) openAchList.remove(theAchievement);
+        if(openAchList.contains(theAchievement)) openAchList.removeIf(Objects::nonNull);
     }
 
     public List<Achievement> getFinishedAchList() {

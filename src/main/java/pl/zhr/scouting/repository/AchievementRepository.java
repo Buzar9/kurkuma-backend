@@ -16,5 +16,7 @@ public interface AchievementRepository {
 
     void removeAchievementFromUser(int achievementId, int userId);
 
+    void finishAchievementForUser(int achievementId, int userId);
+
     void delete(int achievementId);
 }
