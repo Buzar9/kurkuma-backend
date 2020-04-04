@@ -15,6 +15,7 @@ import java.util.List;
 @Repository
 public class PatrolRepositoryImpl implements PatrolRepository {
 
+    @Autowired
     private EntityManager entityManager;
 
     @Override
