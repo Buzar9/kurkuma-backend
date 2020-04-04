@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.zhr.scouting.entity.Realization;
 import pl.zhr.scouting.repository.RealizationRepository;
 
-import java.io.Reader;
 import java.util.List;
 
 @RestController
