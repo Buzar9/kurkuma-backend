@@ -8,19 +8,20 @@ import pl.zhr.scouting.repository.RealizationRepository;
 import java.util.List;
 
 @RestController
+@RequestMapping("/realizations")
 @CrossOrigin(origins = "*")
 public class RealizationController {
 
     @Autowired
     private RealizationRepository realizationRepositoryImpl;
 
-    @GetMapping("/realizations")
+    @GetMapping
     public List<Realization> realizationList(){
 
         return realizationRepositoryImpl.findAll();
     }
 
-    @GetMapping("/realizations/{realizationId}")
+    @GetMapping("{realizationId}")
     public Realization findSingleRealization(@PathVariable int realizationId) {
 
         return realizationRepositoryImpl.findById(realizationId);
@@ -35,7 +36,9 @@ public class RealizationController {
         realizationRepositoryImpl.saveOrUpdate(tempRealization, userId, questId);
     }
 
-    @PutMapping("/{realizationId}/user{userId}/quest{questId}")
+
+//    todo: błąd: zduplikowanie wpisu w tabeli "quest_realization"
+    @PutMapping("{realizationId}/user{userId}/quest{questId}")
     public void updateRealization(@PathVariable int realizationId,
                                   @PathVariable int userId,
                                   @PathVariable int questId,
@@ -45,7 +48,7 @@ public class RealizationController {
         realizationRepositoryImpl.saveOrUpdate(tempRealization, userId, questId);
     }
 
-    @DeleteMapping("/realizations{realizationId}")
+    @DeleteMapping("{realizationId}")
     public void deleteRealization(@PathVariable int realizationId){
 
         realizationRepositoryImpl.delete(realizationId);

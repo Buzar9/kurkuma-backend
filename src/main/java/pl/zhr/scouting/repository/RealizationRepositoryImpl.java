@@ -43,9 +43,9 @@ public class RealizationRepositoryImpl implements RealizationRepository{
 
         Session currentSession = entityManager.unwrap(Session.class);
         Quest tempQuest = currentSession.get(Quest.class, questId);
-        tempQuest.addRealization(tempRealization);
         User tempUser = currentSession.get(User.class, userId);
         tempUser.addRealization(tempRealization);
+        tempQuest.addRealization(tempRealization);
         tempRealization.setUserId(tempUser);
         tempRealization.setUsername(tempUser);
         currentSession.saveOrUpdate(tempRealization);
