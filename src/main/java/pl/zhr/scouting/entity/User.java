@@ -135,5 +135,10 @@ public class User {
         if(achievementList == null) achievementList = new ArrayList<>();
         achievementList.add(theAchievement);
     }
+
+    public void removeAchievement(Achievement theAchievement) {
+
+        if(achievementList.contains(theAchievement)) achievementList.remove(theAchievement);
+    }
 }
 

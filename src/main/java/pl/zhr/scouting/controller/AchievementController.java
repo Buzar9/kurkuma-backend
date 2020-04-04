@@ -41,10 +41,16 @@ public class AchievementController {
         achievementRepositoryImpl.saveOrUpdate(tempAchievement);
     }
 
-    @PutMapping("/achievements{achievementId}/user{userId}")
+    @PutMapping("/achievements{achievementId}/add/user{userId}")
     public void addAchievementToUser(@PathVariable int achievementId,
                                      @PathVariable int userId){
         achievementRepositoryImpl.addAchievementToUser(achievementId, userId);
+    }
+
+    @PutMapping("/achievements{achievementId}/remove/user{userId}")
+    public void removeAchievementFromUser(@PathVariable int achievementId,
+                                          @PathVariable int userId) {
+        achievementRepositoryImpl.removeAchievementFromUser(achievementId, userId);
     }
 
     @DeleteMapping("/achievements{achievementId}")
