@@ -48,6 +48,7 @@ public class RealizationRepositoryImpl implements RealizationRepository{
         tempQuest.addRealization(tempRealization);
         tempRealization.setUserId(tempUser);
         tempRealization.setUsername(tempUser);
+        tempRealization.setQuestId(tempQuest);
         currentSession.saveOrUpdate(tempRealization);
     }
 
