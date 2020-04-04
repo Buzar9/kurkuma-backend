@@ -1,6 +1,9 @@
 package pl.zhr.scouting.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,6 +20,14 @@ public class Achievement {
 
     @OneToMany(mappedBy = "achievementId")
     private List<Quest> questList;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "user_achievement",
+            joinColumns = @JoinColumn(name = "achievement_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> userList;
 
     public Achievement() {
     }
@@ -39,5 +50,28 @@ public class Achievement {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public List<Quest> getQuestList() {
+        return questList;
+    }
+
+    public void setQuestList(List<Quest> questList) {
+        this.questList = questList;
+    }
+
+    public void addQuest(Quest theQuest) {
+
+        if(questList == null) questList = new ArrayList<>();
+        questList.add(theQuest);
+        theQuest.setAchievementId(this);
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 }

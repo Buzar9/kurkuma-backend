@@ -3,6 +3,8 @@ package pl.zhr.scouting.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "quest")
@@ -10,8 +12,8 @@ public class Quest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "quests_id")
-    private int questsId;
+    @Column(name = "quest_id")
+    private int questId;
 
     @Column(name = "description")
     private String description;
@@ -27,6 +29,14 @@ public class Quest {
     @Column(name = "title")
     private String title;
 
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "quest_realization",
+            joinColumns = @JoinColumn(name = "quest_id"),
+            inverseJoinColumns = @JoinColumn(name = "realization_id"))
+    private List<Realization> realizationsList;
+
     public Quest() {
     }
 
@@ -35,12 +45,12 @@ public class Quest {
         this.job = job;
     }
 
-    public int getQuestsId() {
-        return questsId;
+    public int getQuestId() {
+        return questId;
     }
 
-    public void setQuestsId(int questsId) {
-        this.questsId = questsId;
+    public void setQuestId(int questsId) {
+        this.questId = questsId;
     }
 
     public String getDescription() {
@@ -80,5 +90,21 @@ public class Quest {
         } else {
             this.title = achievement.getTitle();
         }
+    }
+
+    public List<Realization> getRealizationsList() {
+        return realizationsList;
+    }
+
+    public void setRealizationsList(List<Realization> realizations) {
+        this.realizationsList = realizations;
+    }
+
+    public void addRealization(Realization theRealization) {
+
+        if (realizationsList == null) {
+            realizationsList = new ArrayList<>();
+        }
+        realizationsList.add(theRealization);
     }
 }

@@ -10,7 +10,7 @@ public interface QuestRepository {
 
     Quest findById(int questId);
 
-    void saveOrUpdate(Quest tempQuest);
+    void saveOrUpdate(Quest tempQuest,int achievementId);
 
     void delete(int questId);
 }

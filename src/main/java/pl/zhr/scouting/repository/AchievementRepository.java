@@ -12,5 +12,7 @@ public interface AchievementRepository {
 
     void saveOrUpdate(Achievement tempAchievement);
 
+    void addAchievementToUser(int achievementId, int userId);
+
     void delete(int achievementId);
 }

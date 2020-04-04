@@ -10,7 +10,7 @@ public interface RealizationRepository {
 
     Realization findById(int realizationId);
 
-    void saveOrUpdate(Realization tempRealization);
+    void saveOrUpdate(Realization tempRealization, int userId, int questId);
 
     void delete(int realizationId);
 }

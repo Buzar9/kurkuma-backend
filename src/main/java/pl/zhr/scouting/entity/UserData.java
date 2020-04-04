@@ -104,11 +104,11 @@ public class UserData {
     }
 
     public void setPatrolName(Patrol patrol) {
-        if (patrol == null) {
+        if (patrolName != null) {
             this.patrolName = null;
-        } else {
-            this.patrolName = patrol.getPatrolName();
         }
+            this.patrolName = patrol.getPatrolName();
+
     }
 
     public User getUser() {

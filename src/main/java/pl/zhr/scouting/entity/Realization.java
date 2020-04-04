@@ -3,6 +3,8 @@ package pl.zhr.scouting.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "realization")
@@ -26,6 +28,14 @@ public class Realization {
 
     @Column(name = "username")
     private String username;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "quest_realization",
+            joinColumns = @JoinColumn(name = "realization_id"),
+            inverseJoinColumns = @JoinColumn(name = "quest_id"))
+    private List<Quest> questsList;
 
     public Realization() {
     }
@@ -75,10 +85,18 @@ public class Realization {
     }
 
     public void setUsername(User user) {
-        if (username == null) {
+        if (username != null) {
             this.username = null;
-        } else {
-            this.username = user.getUsername();
         }
+            this.username = user.getUsername();
+
+    }
+
+    public List<Quest> getQuestsList() {
+        return questsList;
+    }
+
+    public void setQuestsList(List<Quest> quests) {
+        this.questsList = quests;
     }
 }
