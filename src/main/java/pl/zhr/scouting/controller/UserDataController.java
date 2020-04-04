@@ -11,6 +11,7 @@ import pl.zhr.scouting.service.UserDataService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/data")
 @CrossOrigin(origins = "*")
 public class UserDataController {
 
@@ -20,7 +21,7 @@ public class UserDataController {
     @Autowired
     private UserDataRepository userDataRepositoryImpl;
 
-    @GetMapping("/users/data")
+    @GetMapping
     public List<UserData> findAll() {
 
         List<UserData> userDataList = userDataRepositoryImpl.findAll();
@@ -28,7 +29,7 @@ public class UserDataController {
         return userDataList;
     }
 
-    @GetMapping("/users/{userId}/data")
+    @GetMapping("/user{userId}")
     public UserData findUserDataByUserId (@PathVariable int userId) {
 
         UserData tempUserData = userDataRepositoryImpl.findByUserId(userId);
@@ -36,7 +37,7 @@ public class UserDataController {
         return tempUserData;
     }
 
-    @PostMapping("/users/{userId}/data")
+    @PostMapping("/user{userId}")
     public void addDataToUser(@PathVariable int userId,
                                 @RequestBody UserData tempUserData){
 
@@ -44,14 +45,14 @@ public class UserDataController {
         userDataRepositoryImpl.saveOrUpdate(tempUserData, userId);
     }
 
-    @PutMapping("/users/{userId}/data")
+    @PutMapping("/user{userId}")
     public void updateDataInUser(@PathVariable int userId,
                                  @RequestBody UserData tempUserData) {
 
         userDataServiceImpl.updateDataInUser(userId, tempUserData);
     }
 
-    @DeleteMapping("/users/{userId}/data")
+    @DeleteMapping("/user{userId}")
     public String deleteUserData(@PathVariable int userId){
 
         userDataRepositoryImpl.deleteUserData(userId);
