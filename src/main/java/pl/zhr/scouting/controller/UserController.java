@@ -26,7 +26,7 @@ public class UserController {
         return userRepositoryImpl.findAll();
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("{userId}")
     public User findUserById (@PathVariable(value = "userId") int userId) {
 
         User tempUser = userRepositoryImpl.findByUserId(userId);
@@ -40,14 +40,14 @@ public class UserController {
         userServiceImpl.addUser(tempUser);
     }
 
-    @PutMapping("/{userId}")
+    @PutMapping("{userId}")
     public void updateUser(@PathVariable int userId,
                            @RequestBody User tempUser) {
 
         userServiceImpl.updateUser(userId, tempUser);
     }
 
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("{userId}")
     public String deleteUser(@PathVariable(value = "userId") int userId) {
 
         userRepositoryImpl.deleteUser(userId);
