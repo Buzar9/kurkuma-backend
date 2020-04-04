@@ -21,7 +21,7 @@ public class QuestController {
         return questRepositoryImpl.findAll();
     }
 
-    @GetMapping("/{questId}")
+    @GetMapping("{questId}")
     public Quest findById(@PathVariable int questId) {
 
         return questRepositoryImpl.findById(questId);
@@ -35,7 +35,7 @@ public class QuestController {
         questRepositoryImpl.saveOrUpdate(tempQuest, achievementId);
     }
 
-    @PutMapping("/{questId}/achievement/{achievementId}")
+    @PutMapping("{questId}/achievement/{achievementId}")
     public void updateQuest(@PathVariable int questId,
                             @PathVariable int achievementId,
                             @RequestBody Quest tempQuest) {
@@ -44,7 +44,7 @@ public class QuestController {
         questRepositoryImpl.saveOrUpdate(tempQuest, achievementId);
     }
 
-    @DeleteMapping("/{questId}")
+    @DeleteMapping("{questId}")
     public void deleteQuest(@PathVariable int questId) {
 
         questRepositoryImpl.delete(questId);
