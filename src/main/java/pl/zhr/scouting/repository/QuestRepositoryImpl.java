@@ -38,7 +38,7 @@ public class QuestRepositoryImpl implements QuestRepository{
     }
 
     @Override
-    public void save(Quest tempQuest, int achievementId) {
+    public void saveOrUpdate(Quest tempQuest, int achievementId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
         Achievement tempAchievement = currentSession.get(Achievement.class, achievementId);
@@ -47,13 +47,7 @@ public class QuestRepositoryImpl implements QuestRepository{
         tempQuest.setAchievementId(tempAchievement);
         tempQuest.setTitle(tempAchievement);
         currentSession.saveOrUpdate(tempAchievement);
-    }
 
-    @Override
-    public void update(Quest tempQuest) {
-
-        Session currentSession = entityManager.unwrap(Session.class);
-        currentSession.saveOrUpdate(tempQuest);
     }
 
     @Override
