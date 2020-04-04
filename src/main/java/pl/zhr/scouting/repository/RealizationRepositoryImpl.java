@@ -31,14 +31,17 @@ public class RealizationRepositoryImpl implements RealizationRepository{
 
     @Override
     public Realization findById(int realizationId) {
-        return null;
+
+        Session currentSession = entityManager.unwrap(Session.class);
+        Realization tempRealization = currentSession.get(Realization.class, realizationId);
+
+        return tempRealization;
     }
 
     @Override
     public void saveOrUpdate(Realization tempRealization, int userId, int questId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
-//        currentSession.saveOrUpdate(tempRealization);
         Quest tempQuest = currentSession.get(Quest.class, questId);
         tempQuest.addRealization(tempRealization);
         User tempUser = currentSession.get(User.class, userId);
@@ -51,5 +54,8 @@ public class RealizationRepositoryImpl implements RealizationRepository{
     @Override
     public void delete(int realizationId) {
 
+        Session currentSession = entityManager.unwrap(Session.class);
+        Realization tempRealization = currentSession.get(Realization.class, realizationId);
+        currentSession.delete(tempRealization);
     }
 }
