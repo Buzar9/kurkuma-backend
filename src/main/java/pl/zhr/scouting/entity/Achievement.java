@@ -18,7 +18,8 @@ public class Achievement {
     @Column(name = "title")
     private String title;
 
-    @OneToMany(mappedBy = "achievementId")
+    @OneToMany(mappedBy = "achievementId",
+                cascade = CascadeType.ALL)
     private List<Quest> questList;
 
     @JsonIgnore
