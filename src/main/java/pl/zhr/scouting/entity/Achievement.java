@@ -25,10 +25,17 @@ public class Achievement {
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "user_achievement",
+            name = "user_achievement_open",
             joinColumns = @JoinColumn(name = "achievement_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<User> userList;
+    private List<User> openUserList;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_achievement_finished",
+            joinColumns = @JoinColumn(name = "achievement_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> finishedUserList;
 
     public Achievement() {
     }
@@ -68,11 +75,11 @@ public class Achievement {
         theQuest.setAchievementId(this);
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public List<User> getOpenUserList() {
+        return openUserList;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setOpenUserList(List<User> userList) {
+        this.openUserList = userList;
     }
 }

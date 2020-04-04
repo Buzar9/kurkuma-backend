@@ -1,7 +1,5 @@
 package pl.zhr.scouting.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +34,17 @@ public class User {
 
     @ManyToMany
     @JoinTable(
-            name = "user_achievement",
+            name = "user_achievement_open",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "achievement_id"))
-    private List<Achievement> achievementList;
+    private List<Achievement> openAchList;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_achievement_finished",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "achievement_id"))
+    private List<Achievement> finishedAchList;
 
     public User() {
     }
@@ -122,23 +127,42 @@ public class User {
         theRealization.setUserId(this);
     }
 
-    public List<Achievement> getAchievementList() {
-        return achievementList;
+    public List<Achievement> getOpenAchList() {
+        return openAchList;
     }
 
-    public void setAchievementList(List<Achievement> achievementList) {
-        this.achievementList = achievementList;
+    public void setOpenAchList(List<Achievement> achievementList) {
+        this.openAchList = achievementList;
     }
 
-    public void addAchievement(Achievement theAchievement) {
+    public void addOpenAch(Achievement theAchievement) {
 
-        if(achievementList == null) achievementList = new ArrayList<>();
-        achievementList.add(theAchievement);
+        if(openAchList == null) openAchList = new ArrayList<>();
+        openAchList.add(theAchievement);
     }
 
-    public void removeAchievement(Achievement theAchievement) {
+    public void removeOpenAch(Achievement theAchievement) {
 
-        if(achievementList.contains(theAchievement)) achievementList.remove(theAchievement);
+        if(openAchList.contains(theAchievement)) openAchList.remove(theAchievement);
+    }
+
+    public List<Achievement> getFinishedAchList() {
+        return finishedAchList;
+    }
+
+    public void setFinishedAchList(List<Achievement> finishedAchList) {
+        this.finishedAchList = finishedAchList;
+    }
+
+    public void addFinishedAch(Achievement theAchievement) {
+
+        if(finishedAchList == null) finishedAchList = new ArrayList<>();
+        finishedAchList.add(theAchievement);
+    }
+
+    public void removeFinishedAch(Achievement theAchievement) {
+
+        if(finishedAchList.contains(theAchievement)) finishedAchList.remove(theAchievement);
     }
 }
 

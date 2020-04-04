@@ -5,7 +5,6 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 import pl.zhr.scouting.entity.Achievement;
 import pl.zhr.scouting.entity.User;
 
@@ -52,7 +51,7 @@ public class AchievementRepositoryImpl implements AchievementRepository {
         Session currentSession = entityManager.unwrap(Session.class);
         User tempUser = currentSession.get(User.class, userId);
         Achievement tempAchievement = currentSession.get(Achievement.class, achievementId);
-        tempUser.addAchievement(tempAchievement);
+        tempUser.addOpenAch(tempAchievement);
         currentSession.saveOrUpdate(tempUser);
         currentSession.saveOrUpdate(tempAchievement);
     }
@@ -63,7 +62,7 @@ public class AchievementRepositoryImpl implements AchievementRepository {
         Session currentSession = entityManager.unwrap(Session.class);
         User tempUser = currentSession.get(User.class, userId);
         Achievement tempAchievement = currentSession.get(Achievement.class, achievementId);
-        tempUser.removeAchievement(tempAchievement);
+        tempUser.removeOpenAch(tempAchievement);
         currentSession.saveOrUpdate(tempUser);
         currentSession.saveOrUpdate(tempAchievement);
     }
