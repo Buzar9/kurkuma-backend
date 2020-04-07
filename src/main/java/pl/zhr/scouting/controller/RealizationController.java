@@ -34,15 +34,9 @@ public class RealizationController {
 
         tempRealization.setRealizationId(0);
         realizationRepositoryImpl.saveOrUpdate(tempRealization, userId, questId);
+        realizationRepositoryImpl.addRelationQuestReal(tempRealization.getRealizationId(), questId);
     }
 
-    @PutMapping("{realId}/quest{questId}")
-    public void addRelationQuestRealization(@PathVariable int realId,
-                                            @PathVariable int questId) {
-
-        realizationRepositoryImpl.addRelationQuestReal(realId, questId);
-    }
-    
     @PutMapping("{realizationId}/user{userId}/quest{questId}")
     public void updateRealization(@PathVariable int realizationId,
                                   @PathVariable int userId,
