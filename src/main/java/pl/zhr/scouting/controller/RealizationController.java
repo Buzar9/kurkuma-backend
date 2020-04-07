@@ -46,13 +46,14 @@ public class RealizationController {
 
         tempRealization.setRealizationId(realizationId);
         realizationRepositoryImpl.saveOrUpdate(tempRealization, userId, questId);
-        realizationRepositoryImpl.addRelationQuestReal(realizationId, questId);
+//        realizationRepositoryImpl.addRelationQuestReal(realizationId, questId);
         realizationRepositoryImpl.setRealizationData(realizationId);
     }
 
     @DeleteMapping("{realizationId}")
     public void deleteRealization(@PathVariable int realizationId){
 
+        realizationRepositoryImpl.removeRelationQuestReal(realizationId);
         realizationRepositoryImpl.delete(realizationId);
     }
 }

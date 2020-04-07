@@ -103,4 +103,9 @@ public class Quest {
         }
         realizationsList.add(theRealization);
     }
+
+    public void removeRealization(Realization theRealization) {
+        if(realizationsList.contains(theRealization)) realizationsList.remove(theRealization);
+    }
 }
+
