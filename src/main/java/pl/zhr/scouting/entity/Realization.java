@@ -33,6 +33,9 @@ public class Realization {
     @Column(name = "quest_id")
     private int questId;
 
+    @Column(name = "image_path")
+    private String imagePath;
+
     public Realization() {
     }
 
@@ -90,6 +93,14 @@ public class Realization {
 
     public void setQuestId(Quest quest) {
         this.questId = quest.getQuestId();
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
 

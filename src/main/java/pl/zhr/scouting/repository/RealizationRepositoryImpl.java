@@ -67,11 +67,19 @@ public class RealizationRepositoryImpl implements RealizationRepository{
     public void setRealizationData(int realId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
-
         Realization tempRealization = currentSession.get(Realization.class, realId);
 
         tempRealization.setUserId(tempRealization.getUserId());
         tempRealization.setUsername(tempRealization.getUserId());
+    }
+
+    @Override
+    public void addFile(int realId, String fileName) {
+
+        Session currentSession = entityManager.unwrap(Session.class);
+        Realization tempRealization = currentSession.get(Realization.class, realId);
+
+        tempRealization.setImagePath(fileName);
     }
 
     @Override

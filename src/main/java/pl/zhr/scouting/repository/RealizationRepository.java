@@ -16,6 +16,8 @@ public interface RealizationRepository {
 
     void setRealizationData(int realId);
 
+    void addFile(int realId, String fileName);
+
     void delete(int realizationId);
 
     void removeRelationQuestReal(int realId);
