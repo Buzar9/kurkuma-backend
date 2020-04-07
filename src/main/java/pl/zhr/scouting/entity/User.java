@@ -121,13 +121,6 @@ public class User {
         this.realizationList = realizationList;
     }
 
-    public void addRealization(Realization theRealization) {
-
-        if(realizationList == null) realizationList = new ArrayList<>();
-        realizationList.add(theRealization);
-        theRealization.setUserId(this);
-    }
-
     public List<Achievement> getOpenAchList() {
         return openAchList;
     }

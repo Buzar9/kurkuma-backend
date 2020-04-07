@@ -40,10 +40,6 @@ public class Quest {
     public Quest() {
     }
 
-    public Quest(String description, String job) {
-        this.description = description;
-        this.job = job;
-    }
 
     public int getQuestId() {
         return questId;
