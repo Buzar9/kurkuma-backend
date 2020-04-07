@@ -26,11 +26,8 @@ public class Realization {
     private String username;
 
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "quest_realization",
-            joinColumns = @JoinColumn(name = "quest_id"),
-            inverseJoinColumns = @JoinColumn(name = "realization_id"))
+    @ManyToMany(mappedBy = "realizationsList",
+                cascade = CascadeType.ALL)
     private List<Quest> questsList;
 
     @Column(name = "quest_id")
