@@ -22,19 +22,10 @@ public class Achievement {
                 cascade = CascadeType.ALL)
     private List<Quest> questList;
 
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(
-            name = "user_achievement_open",
-            joinColumns = @JoinColumn(name = "achievement_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @ManyToMany(mappedBy = "openAchList")
     private List<User> openUserList;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_achievement_finished",
-            joinColumns = @JoinColumn(name = "achievement_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @ManyToMany(mappedBy = "finishedAchList")
     private List<User> finishedUserList;
 
     public Achievement() {
