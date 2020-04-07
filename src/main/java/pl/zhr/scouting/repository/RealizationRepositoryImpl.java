@@ -62,7 +62,16 @@ public class RealizationRepositoryImpl implements RealizationRepository{
         currentSession.saveOrUpdate(tempRealization);
     }
 
-    
+    @Override
+    public void addRelationQuestReal(int realId, int questId) {
+
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        Quest tempQuest = currentSession.get(Quest.class, questId);
+        Realization tempRealization = currentSession.get(Realization.class, realId);
+
+        tempQuest.addRealization(tempRealization);
+    }
 
     @Override
     public void delete(int realizationId) {

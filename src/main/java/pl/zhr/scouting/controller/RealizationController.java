@@ -36,8 +36,13 @@ public class RealizationController {
         realizationRepositoryImpl.saveOrUpdate(tempRealization, userId, questId);
     }
 
+    @PutMapping("{realId}/quest{questId}")
+    public void addRelationQuestRealization(@PathVariable int realId,
+                                            @PathVariable int questId) {
 
-//    todo: błąd: zduplikowanie wpisu w tabeli "quest_realization"
+        realizationRepositoryImpl.addRelationQuestReal(realId, questId);
+    }
+    
     @PutMapping("{realizationId}/user{userId}/quest{questId}")
     public void updateRealization(@PathVariable int realizationId,
                                   @PathVariable int userId,

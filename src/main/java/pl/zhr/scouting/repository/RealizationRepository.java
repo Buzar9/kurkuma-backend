@@ -12,5 +12,7 @@ public interface RealizationRepository {
 
     void saveOrUpdate(Realization tempRealization, int userId, int questId);
 
+    void addRelationQuestReal(int realId, int questId);
+
     void delete(int realizationId);
 }
