@@ -46,7 +46,6 @@ public class RealizationController {
 
         tempRealization.setRealizationId(realizationId);
         realizationRepositoryImpl.saveOrUpdate(tempRealization, userId, questId);
-//        realizationRepositoryImpl.addRelationQuestReal(realizationId, questId);
         realizationRepositoryImpl.setRealizationData(realizationId);
     }
 
