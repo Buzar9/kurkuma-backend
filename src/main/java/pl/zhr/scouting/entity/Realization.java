@@ -17,21 +17,27 @@ public class Realization {
     @Column(name = "description")
     private String description;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User userId;
+//    @JsonIgnore
+//    @ManyToOne
+//    @JoinColumn(name = "user_id")
+//    private User userId;
+//
+//    @Column(name = "username")
+//    private String username;
 
-    @Column(name = "username")
-    private String username;
+//    @JsonIgnore
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "quest_realization",
+//            joinColumns = @JoinColumn(name = "quest_id"),
+//            inverseJoinColumns = @JoinColumn(name = "realization_id"))
+//    private List<Quest> questsList;
+//
+//    @Column(name = "quest_id")
+//    private int questId;
 
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(
-            name = "quest_realization",
-            joinColumns = @JoinColumn(name = "realization_id"),
-            inverseJoinColumns = @JoinColumn(name = "quest_id"))
-    private List<Quest> questsList;
+    @Column(name = "user_id")
+    private int userId;
 
     @Column(name = "quest_id")
     private int questId;
@@ -60,45 +66,56 @@ public class Realization {
         this.description = description;
     }
 
-    public User getUserId() {
+//    public User getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(User user) {
+//        this.userId = user;
+//    }
+//
+//    public String getUsername() {
+//        return username;
+//    }
+//
+//    public void setUsername(User user) {
+//        if (username != null) {
+//            this.username = null;
+//        }
+//            this.username = user.getUsername();
+//    }
+
+//    public List<Quest> getQuestsList() {
+//        return questsList;
+//    }
+//
+//    public void setQuestsList(List<Quest> quests) {
+//        this.questsList = quests;
+//    }
+//
+//    public int getQuestId() {
+//        return questId;
+//    }
+//
+//    public void setQuestId(Quest quest) {
+//        this.questId = quest.getQuestId();
+//    }
+
+
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(User user) {
-        if(userId != null) {
-            userId = null;
-        }
-        this.userId = user;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(User user) {
-        if (username != null) {
-            this.username = null;
-        }
-            this.username = user.getUsername();
-    }
-
-    public List<Quest> getQuestsList() {
-        return questsList;
-    }
-
-    public void setQuestsList(List<Quest> quests) {
-        this.questsList = quests;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getQuestId() {
         return questId;
     }
 
-    public void setQuestId(Quest quest) {
-        if (questId != 0) {
-            this.questId = 0;
-        }
-        this.questId = quest.getQuestId();
+    public void setQuestId(int questId) {
+        this.questId = questId;
     }
 }
 

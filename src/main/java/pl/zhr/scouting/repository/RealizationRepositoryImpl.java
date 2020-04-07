@@ -42,13 +42,15 @@ public class RealizationRepositoryImpl implements RealizationRepository{
     public void saveOrUpdate(Realization tempRealization, int userId, int questId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
-        Quest tempQuest = currentSession.get(Quest.class, questId);
-        User tempUser = currentSession.get(User.class, userId);
-        tempUser.addRealization(tempRealization);
-        tempQuest.addRealization(tempRealization);
-        tempRealization.setUserId(tempUser);
-        tempRealization.setUsername(tempUser);
-        tempRealization.setQuestId(tempQuest);
+//        Quest tempQuest = currentSession.get(Quest.class, questId);
+//        User tempUser = currentSession.get(User.class, userId);
+//        tempUser.addRealization(tempRealization);
+//        tempQuest.addRealization(tempRealization);
+//        tempRealization.setUserId(tempUser);
+//        tempRealization.setUsername(tempUser);
+//        tempRealization.setQuestId(tempQuest);
+        tempRealization.setUserId(userId);
+        tempRealization.setQuestId(questId);
         currentSession.saveOrUpdate(tempRealization);
     }
 

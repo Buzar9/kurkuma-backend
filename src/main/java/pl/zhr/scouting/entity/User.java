@@ -30,8 +30,8 @@ public class User {
     @JoinColumn(name = "user_data_id")
     private UserData userDataId;
 
-    @OneToMany(mappedBy = "userId")
-    private List<Realization> realizationList;
+//    @OneToMany(mappedBy = "userId")
+//    private List<Realization> realizationList;
 
     @ManyToMany
     @JoinTable(
@@ -113,20 +113,20 @@ public class User {
         this.userDataId = tempUserData;
     }
 
-    public List<Realization> getRealizationList() {
-        return realizationList;
-    }
-
-    public void setRealizationList(List<Realization> realizationList) {
-        this.realizationList = realizationList;
-    }
-
-    public void addRealization(Realization theRealization) {
-
-        if(realizationList == null) realizationList = new ArrayList<>();
-        realizationList.add(theRealization);
-        theRealization.setUserId(this);
-    }
+//    public List<Realization> getRealizationList() {
+//        return realizationList;
+//    }
+//
+//    public void setRealizationList(List<Realization> realizationList) {
+//        this.realizationList = realizationList;
+//    }
+//
+//    public void addRealization(Realization theRealization) {
+//
+//        if(realizationList == null) realizationList = new ArrayList<>();
+//        realizationList.add(theRealization);
+//        theRealization.setUserId(this);
+//    }
 
     public List<Achievement> getOpenAchList() {
         return openAchList;
