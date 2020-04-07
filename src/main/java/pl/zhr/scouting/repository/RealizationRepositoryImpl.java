@@ -49,10 +49,20 @@ public class RealizationRepositoryImpl implements RealizationRepository{
 //        tempRealization.setUserId(tempUser);
 //        tempRealization.setUsername(tempUser);
 //        tempRealization.setQuestId(tempQuest);
-        tempRealization.setUserId(userId);
-        tempRealization.setQuestId(questId);
+
+//        tempRealization.setUserId(userId);
+//        tempRealization.setQuestId(questId);
+
+        Quest tempQuest = currentSession.get(Quest.class, questId);
+        User tempUser = currentSession.get(User.class, userId);
+
+        tempRealization.setQuestId(tempQuest);
+        tempRealization.setUserId(tempUser);
+
         currentSession.saveOrUpdate(tempRealization);
     }
+
+    
 
     @Override
     public void delete(int realizationId) {

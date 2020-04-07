@@ -29,13 +29,13 @@ public class Quest {
     @Column(name = "title")
     private String title;
 
-//    @JsonIgnore
-//    @ManyToMany
-//    @JoinTable(
-//            name = "quest_realization",
-//            joinColumns = @JoinColumn(name = "quest_id"),
-//            inverseJoinColumns = @JoinColumn(name = "realization_id"))
-//    private List<Realization> realizationsList;
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "quest_realization",
+            joinColumns = @JoinColumn(name = "quest_id"),
+            inverseJoinColumns = @JoinColumn(name = "realization_id"))
+    private List<Realization> realizationsList;
 
     public Quest() {
     }
@@ -92,19 +92,19 @@ public class Quest {
         }
     }
 
-//    public List<Realization> getRealizationsList() {
-//        return realizationsList;
-//    }
-//
-//    public void setRealizationsList(List<Realization> realizations) {
-//        this.realizationsList = realizations;
-//    }
-//
-//    public void addRealization(Realization theRealization) {
-//
-//        if (realizationsList == null) {
-//            realizationsList = new ArrayList<>();
-//        }
-//        realizationsList.add(theRealization);
-//    }
+    public List<Realization> getRealizationsList() {
+        return realizationsList;
+    }
+
+    public void setRealizationsList(List<Realization> realizations) {
+        this.realizationsList = realizations;
+    }
+
+    public void addRealization(Realization theRealization) {
+
+        if (realizationsList == null) {
+            realizationsList = new ArrayList<>();
+        }
+        realizationsList.add(theRealization);
+    }
 }
