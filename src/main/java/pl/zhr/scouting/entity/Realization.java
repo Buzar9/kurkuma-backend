@@ -17,9 +17,6 @@ public class Realization {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "job")
-    private String job;
-
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -42,9 +39,9 @@ public class Realization {
     public Realization() {
     }
 
-    public Realization(String description, String job) {
+    public Realization(String description) {
         this.description = description;
-        this.job = job;
+
     }
 
     public int getRealizationId() {
@@ -61,14 +58,6 @@ public class Realization {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getJob() {
-        return job;
-    }
-
-    public void setJob(String job) {
-        this.job = job;
     }
 
     public User getUserId() {
