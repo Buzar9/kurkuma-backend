@@ -26,7 +26,7 @@ public class Realization {
     private String username;
 
     @JsonIgnore
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "quest_realization",
             joinColumns = @JoinColumn(name = "quest_id"),

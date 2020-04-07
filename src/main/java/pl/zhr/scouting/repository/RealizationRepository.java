@@ -14,5 +14,7 @@ public interface RealizationRepository {
 
     void addRelationQuestReal(int realId, int questId);
 
+    void setRealizationData(int realId);
+
     void delete(int realizationId);
 }

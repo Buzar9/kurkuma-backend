@@ -35,6 +35,7 @@ public class RealizationController {
         tempRealization.setRealizationId(0);
         realizationRepositoryImpl.saveOrUpdate(tempRealization, userId, questId);
         realizationRepositoryImpl.addRelationQuestReal(tempRealization.getRealizationId(), questId);
+        realizationRepositoryImpl.setRealizationData(tempRealization.getRealizationId());
     }
 
     @PutMapping("{realizationId}/user{userId}/quest{questId}")
@@ -45,6 +46,8 @@ public class RealizationController {
 
         tempRealization.setRealizationId(realizationId);
         realizationRepositoryImpl.saveOrUpdate(tempRealization, userId, questId);
+        realizationRepositoryImpl.addRelationQuestReal(realizationId, questId);
+        realizationRepositoryImpl.setRealizationData(realizationId);
     }
 
     @DeleteMapping("{realizationId}")

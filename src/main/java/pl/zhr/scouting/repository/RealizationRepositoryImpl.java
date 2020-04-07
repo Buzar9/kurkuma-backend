@@ -64,6 +64,17 @@ public class RealizationRepositoryImpl implements RealizationRepository{
     }
 
     @Override
+    public void setRealizationData(int realId) {
+
+        Session currentSession = entityManager.unwrap(Session.class);
+
+        Realization tempRealization = currentSession.get(Realization.class, realId);
+
+        tempRealization.setUserId(tempRealization.getUserId());
+        tempRealization.setUsername(tempRealization.getUserId());
+    }
+
+    @Override
     public void delete(int realizationId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
