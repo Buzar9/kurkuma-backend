@@ -34,7 +34,6 @@ public class AchievementController {
         achievementRepositoryImpl.saveOrUpdate(tempAchievement);
     }
 
-//    todo: pod update jest usównana relacja pomiędzy achievement i user
     @PutMapping("{achievementId}")
     public void updateAchievements(@PathVariable int achievementId,
                                     @RequestBody Achievement tempAchievement) {
