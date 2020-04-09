@@ -42,27 +42,27 @@ public class RealizationController {
         return realizationRepositoryImpl.findById(realizationId);
     }
 
-    @GetMapping("/downloadFile/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
-
-        Resource resource = realizationFileService.loadFileAsResource(fileName);
-        String contentType = null;
-        try {
-            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        } catch (IOException ex){
-            System.out.println("Could not determinate file type.");
-        }
-
-//        Fallback to the default content type if type could not be determined
-        if(contentType == null) {
-            contentType = "application/octet-stream";
-        }
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
-    }
+//    @GetMapping("/downloadFile/{fileName:.+}")
+//    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request) {
+//
+//        Resource resource = realizationFileService.loadFileAsResource(fileName);
+//        String contentType = null;
+//        try {
+//            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+//        } catch (IOException ex){
+//            System.out.println("Could not determinate file type.");
+//        }
+//
+////        Fallback to the default content type if type could not be determined
+//        if(contentType == null) {
+//            contentType = "application/octet-stream";
+//        }
+//
+//        return ResponseEntity.ok()
+//                .contentType(MediaType.parseMediaType(contentType))
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+//                .body(resource);
+//    }
 
     @PostMapping("/user{userId}/quest{questId}")
     public void saveRealization(@PathVariable int userId,
@@ -75,20 +75,20 @@ public class RealizationController {
         realizationRepositoryImpl.setRealizationData(tempRealization.getRealizationId());
     }
 
-    @PostMapping("/uploadFile/real{realId}")
-    public UploadFileResponse uploadFile(@PathVariable int realId, @RequestParam("file") MultipartFile file) {
-
-        String fileName = realizationFileService.storeFile(file);
-        realizationRepositoryImpl.addFile(realId, fileName);
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/realizations/downloadFile/")
-                .path(fileName)
-                .toUriString();
-
-        return new UploadFileResponse (fileName, fileDownloadUri,
-                file.getContentType(), file.getSize());
-    }
-
+//    @PostMapping("/uploadFile/real{realId}")
+//    public UploadFileResponse uploadFile(@PathVariable int realId, @RequestParam("file") MultipartFile file) {
+//
+//        String fileName = realizationFileService.storeFile(file);
+//        realizationRepositoryImpl.addFile(realId, fileName);
+//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                .path("/realizations/downloadFile/")
+//                .path(fileName)
+//                .toUriString();
+//
+//        return new UploadFileResponse (fileName, fileDownloadUri,
+//                file.getContentType(), file.getSize());
+//    }
+//
 //    @PostMapping("/uploadMultipleFiles")
 //    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files) {
 //
