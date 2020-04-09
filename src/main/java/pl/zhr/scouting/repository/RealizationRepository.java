@@ -1,5 +1,6 @@
 package pl.zhr.scouting.repository;
 
+import pl.zhr.scouting.entity.File;
 import pl.zhr.scouting.entity.Realization;
 
 import java.util.List;
@@ -12,11 +13,13 @@ public interface RealizationRepository {
 
     void saveOrUpdate(Realization tempRealization, int userId, int questId);
 
+    void addFile(File tempFile);
+
     void addRelationQuestReal(int realId, int questId);
 
     void setRealizationData(int realId);
 
-    void addFile(int realId, String fileName);
+    void addFile(int realId, int fileId);
 
     void delete(int realizationId);
 

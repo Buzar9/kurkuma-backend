@@ -5,6 +5,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import pl.zhr.scouting.entity.File;
 import pl.zhr.scouting.entity.Quest;
 import pl.zhr.scouting.entity.Realization;
 import pl.zhr.scouting.entity.User;
@@ -53,6 +54,11 @@ public class RealizationRepositoryImpl implements RealizationRepository{
     }
 
     @Override
+    public void addFile(File tempFile) {
+
+    }
+
+    @Override
     public void addRelationQuestReal(int realId, int questId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
@@ -74,12 +80,16 @@ public class RealizationRepositoryImpl implements RealizationRepository{
     }
 
     @Override
-    public void addFile(int realId, String fileName) {
+    public void addFile(int realId, int fileId) {
 
         Session currentSession = entityManager.unwrap(Session.class);
         Realization tempRealization = currentSession.get(Realization.class, realId);
+        Query query = currentSession.createQuery("from File", File.class);
+        List<File> fileList = query.getResultList();
+        File tempFile = currentSession.get(File.class, fileId);
 
-        tempRealization.setImagePath(fileName);
+        tempRealization.setImagePath(tempFile.getFileName());
+        tempRealization.addFile(tempFile);
     }
 
     @Override
